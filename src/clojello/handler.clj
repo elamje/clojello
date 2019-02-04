@@ -1,10 +1,26 @@
-(ns webapp.handler
-  (:require [compojure.core :refer :all]
+(ns clojello.handler
+  (:require [clojello.views :as views]
+            [compojure.core :refer :all]
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
 
 (defroutes app-routes
-  (GET "/" [] "Hello World")
+  (GET "/" 
+      [] 
+      (views/home-page)) 
+  (GET "/add-file"
+      []
+      (views/add-file-page))
+  (GET "/add-file-results-page"
+      {params :params}
+      (views/add-file-results-page params)) 
+  (GET "/file/:file-id"
+      [file-id]
+      (views/file-page file-id))
+  (GET "/all-files"
+      []
+      (views/all-files-page))  
+  (route/resources "/")    
   (route/not-found "Not Found"))
 
 (def app
