@@ -47,7 +47,7 @@
        (gen-page-head "Added a File")
        header-links
        [:h1 "Added a File"]
-       [:p "Added ["'file'", "'user'"] (id: " id ") to the db. "
+       [:p "Added ["file", "user"] (id: " id ") to the db. "
         [:a {:href (str "/file/" id)} "See for yourself"]
         "."])))
   
@@ -55,7 +55,7 @@
     [file-id]
     (let [{file :file user :user} (db/get-file file-id)]
       (page/html5
-       (gen-page-head (str "File " file-id))
+       (gen-page-head (str "File: " file-id))
        header-links
        [:h1 "A Single File"]
        [:p "id: " file-id]

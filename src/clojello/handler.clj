@@ -7,11 +7,11 @@
 (defroutes app-routes
   (GET "/" 
       [] 
-      (views/home-page)) 
+      (views/home-page))
   (GET "/add-file"
       []
       (views/add-file-page))
-  (GET "/add-file-results-page"
+  (POST "/add-file"
       {params :params}
       (views/add-file-results-page params)) 
   (GET "/file/:file-id"

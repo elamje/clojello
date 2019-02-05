@@ -12,7 +12,7 @@
   (defn get-file
     [file-id]
     (let [results (jdbc/query db-spec
-                              ["select file where id = ?" file-id])]
+        ["select file, user from files where id = ?" file-id])]
       (assert (= (count results) 1))
       (first results)))
   
